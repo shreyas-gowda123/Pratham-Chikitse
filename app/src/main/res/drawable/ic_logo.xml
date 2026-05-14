@@ -1,0 +1,43 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="200dp"
+    android:viewportWidth="100"
+    android:viewportHeight="100">
+
+    <!-- Outer thin circle -->
+    <path
+        android:pathData="M50,4 A46,46 0 1,1 49.9,4"
+        android:strokeColor="#1E3A8A"
+        android:strokeWidth="1"/>
+
+    <!-- Red Cross -->
+    <path
+        android:fillColor="#DC2626"
+        android:pathData="M35,22h30v15h15v20h-15v15h-30v-15h-15v-20h15z" />
+
+    <!-- White Heart shape (represents the two people) -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M50,55c-6,-7 -14,-4 -14,4c0,8 14,14 14,14s14,-6 14,-14c0,-8 -8,-11 -14,-4z" />
+
+    <!-- Adult head -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M47,50a3,3 0 1,1 6,0a3,3 0 1,1 -6,0" />
+
+    <!-- Child head -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M55,54a2,2 0 1,1 4,0a2,2 0 1,1 -4,0" />
+
+    <!-- Pulse Line inside Heart -->
+    <path
+        android:strokeColor="#DC2626"
+        android:strokeWidth="1.2"
+        android:pathData="M42,57h3l1.5,-4l2,8l1.5,-4h4" />
+
+    <!-- Supporting Hand (Blue) -->
+    <path
+        android:fillColor="#1E3A8A"
+        android:pathData="M25,68c15,6 35,6 50,0c-5,10 -20,15 -35,12c-8,-1 -15,-6 -15,-12z" />
+</vector>

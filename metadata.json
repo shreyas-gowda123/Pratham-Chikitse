@@ -1,0 +1,8 @@
+{
+  "name": "Pratham-Chikitse",
+  "description": "A pure Kotlin / Jetpack Compose Android Studio project providing multilingual first aid guidance, emergency contacts, and hospital location suggesting.",
+  "requestFramePermissions": [
+    "geolocation"
+  ],
+  "majorCapabilities": []
+}

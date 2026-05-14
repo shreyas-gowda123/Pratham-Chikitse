@@ -1,0 +1,37 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="200dp"
+    android:viewportWidth="100"
+    android:viewportHeight="100">
+    <!-- Circular Border - Blue Left -->
+    <path
+        android:pathData="M50,2 A48,48 0 0,0 50,98"
+        android:strokeColor="#1E3A8A"
+        android:strokeWidth="1.5"/>
+    <!-- Circular Border - Red Right -->
+    <path
+        android:pathData="M50,2 A48,48 0 0,1 50,98"
+        android:strokeColor="#DC2626"
+        android:strokeWidth="1.5"/>
+
+    <!-- Red Cross -->
+    <path
+        android:fillColor="#DC2626"
+        android:pathData="M35,28h30v12h12v20h-12v12h-30v-12h-12v-20h12z" />
+
+    <!-- White Heart Shape -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M50,55c-4,-6 -10,-4 -10,2c0,6 10,10 10,10s10,-4 10,-10c0,-6 -6,-8 -10,-2z" />
+
+    <!-- Pulse Line inside Heart -->
+    <path
+        android:strokeColor="#DC2626"
+        android:strokeWidth="0.8"
+        android:pathData="M44,57h3l1.5,-4l2.5,8l1.5,-4h3.5" />
+
+    <!-- Supporting Hand (Blue) -->
+    <path
+        android:fillColor="#1E3A8A"
+        android:pathData="M25,68c15,5 35,5 50,0c-5,10 -20,15 -35,12c-10,-2 -15,-7 -15,-12z" />
+</vector>
