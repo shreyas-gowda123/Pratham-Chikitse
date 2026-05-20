@@ -14,7 +14,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cardiac Arrest"
+            android:text="@string/cardiac_arrest_title"
             android:textSize="28sp"
             android:textStyle="bold"
             android:paddingBottom="12dp"/>
@@ -24,14 +24,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Symptoms"
+            android:text="@string/symptoms_label"
             android:textStyle="bold"
             android:textSize="22sp"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="• Sudden collapse\n• No breathing\n• Unconsciousness\n• No pulse"
+            android:text="@string/cardiac_arrest_symptoms"
             android:textSize="18sp"
             android:paddingBottom="16dp"/>
 
@@ -40,14 +40,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Immediate First Aid"
+            android:text="@string/immediate_first_aid_label"
             android:textStyle="bold"
             android:textSize="22sp"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="1. Call emergency services.\n2. Start CPR.\n3. Use AED if available."
+            android:text="@string/cardiac_arrest_first_aid"
             android:textSize="18sp"
             android:paddingBottom="16dp"/>
 
@@ -56,14 +56,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Do Not"
+            android:text="@string/do_not_label"
             android:textStyle="bold"
             android:textSize="22sp"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="• Do not delay CPR\n• Do not shake the patient"
+            android:text="@string/cardiac_arrest_do_not"
             android:textSize="18sp"/>
 
     </LinearLayout>

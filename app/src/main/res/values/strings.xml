@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Pratham-Chikitse</string>
+    <string name="cardiac_arrest_title">Cardiac Arrest</string>
+    <string name="symptoms_label">Symptoms</string>
+    <string name="cardiac_arrest_symptoms">• Sudden collapse\n• No breathing\n• Unconsciousness\n• No pulse</string>
+    <string name="immediate_first_aid_label">Immediate First Aid</string>
+    <string name="cardiac_arrest_first_aid">1. Call emergency services.\n2. Start CPR.\n3. Use AED if available.</string>
+    <string name="do_not_label">Do Not</string>
+    <string name="cardiac_arrest_do_not">• Do not delay CPR\n• Do not shake the patient</string>
 </resources>

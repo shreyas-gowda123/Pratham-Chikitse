@@ -10,7 +10,10 @@ data class EmergencyCategory(
     val color: String,
     val title: Map<String, String>,
     val description: Map<String, String>,
-    val steps: Map<String, List<EmergencyStep>>
+    val symptoms: Map<String, List<String>> = emptyMap(),
+    val steps: Map<String, List<EmergencyStep>>,
+    val doNot: Map<String, List<String>> = emptyMap(),
+    val preventionTips: Map<String, List<String>> = emptyMap()
 )
 
 enum class Language(val code: String, val displayName: String) {

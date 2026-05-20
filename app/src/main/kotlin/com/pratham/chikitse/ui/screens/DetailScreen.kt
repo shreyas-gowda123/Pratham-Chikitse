@@ -39,6 +39,10 @@ fun DetailScreen(
     val context = LocalContext.current
     val langCode = language.code
     val steps = emergency.steps[langCode] ?: emergency.steps["en"] ?: emptyList()
+    val symptoms = emergency.symptoms[langCode] ?: emergency.symptoms["en"] ?: emptyList()
+    val doNot = emergency.doNot[langCode] ?: emergency.doNot["en"] ?: emptyList()
+    val prevention = emergency.preventionTips[langCode] ?: emergency.preventionTips["en"] ?: emptyList()
+    
     val bgColor = try { Color(android.graphics.Color.parseColor(emergency.color)) } catch (e: Exception) { Color.Red }
 
     Scaffold(
@@ -90,37 +94,39 @@ fun DetailScreen(
             }
 
             Column(modifier = Modifier.padding(24.dp)) {
-                Text(
-                    text = "FIRST AID STEPS",
-                    fontSize = 12.sp,
-                    fontWeight = FontWeight.Black,
-                    color = Color.Gray,
-                    letterSpacing = 2.sp,
-                    modifier = Modifier.padding(bottom = 24.dp)
-                )
+                
+                if (symptoms.isNotEmpty()) {
+                    SectionTitle(if(langCode == "kn") "ಲಕ್ಷಣಗಳು" else "SYMPTOMS")
+                    symptoms.forEach { symptom ->
+                        BulletPoint(symptom)
+                    }
+                    Spacer(modifier = Modifier.height(24.dp))
+                }
 
+                SectionTitle(if(langCode == "kn") "ಪ್ರಥಮ ಚಿಕಿತ್ಸಾ ಕ್ರಮಗಳು" else "FIRST AID STEPS")
                 steps.forEachIndexed { index, step ->
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(bottom = 24.dp),
+                            .padding(bottom = 16.dp),
                         verticalAlignment = Alignment.Top
                     ) {
                         Surface(
-                            modifier = Modifier.size(36.dp),
-                            shape = RoundedCornerShape(10.dp),
+                            modifier = Modifier.size(28.dp),
+                            shape = CircleShape,
                             color = bgColor.copy(alpha = 0.1f)
                         ) {
                             Box(contentAlignment = Alignment.Center) {
                                 Text(
                                     text = (index + 1).toString(),
                                     color = bgColor,
-                                    fontWeight = FontWeight.Black
+                                    fontWeight = FontWeight.Black,
+                                    fontSize = 14.sp
                                 )
                             }
                         }
                         
-                        Spacer(modifier = Modifier.width(16.dp))
+                        Spacer(modifier = Modifier.width(12.dp))
                         
                         Text(
                             text = step.text,
@@ -132,6 +138,27 @@ fun DetailScreen(
                     }
                 }
 
+                if (doNot.isNotEmpty()) {
+                    Spacer(modifier = Modifier.height(24.dp))
+                    SectionTitle(if(langCode == "kn") "ಮಾಡಬಾರದು" else "DO NOT", color = Color.Red)
+                    doNot.forEach { item ->
+                        Row(modifier = Modifier.padding(bottom = 8.dp)) {
+                            Text("✕ ", color = Color.Red, fontWeight = FontWeight.Bold)
+                            Text(item, fontSize = 15.sp, color = Color(0xFF334155))
+                        }
+                    }
+                }
+
+                if (prevention.isNotEmpty()) {
+                    Spacer(modifier = Modifier.height(24.dp))
+                    SectionTitle(if(langCode == "kn") "ಮುನ್ನೆಚ್ಚರಿಕೆ ಕ್ರಮಗಳು" else "PREVENTION TIPS", color = Color(0xFF15803D))
+                    prevention.forEach { tip ->
+                        BulletPoint(tip)
+                    }
+                }
+
+                Spacer(modifier = Modifier.height(32.dp))
+
                 // If First Aid fails section
                 Card(
                     modifier = Modifier.fillMaxWidth().padding(top = 16.dp),
@@ -142,10 +169,15 @@ fun DetailScreen(
                         Row(verticalAlignment = Alignment.CenterVertically) {
                             Icon(Icons.Default.Warning, contentDescription = null, tint = Color(0xFFEA580C))
                             Spacer(Modifier.width(8.dp))
-                            Text("First Aid not working?", fontWeight = FontWeight.Bold, color = Color(0xFF9A3412))
+                            Text(
+                                if(langCode == "kn") "ಪ್ರಥಮ ಚಿಕಿತ್ಸೆ ಕೆಲಸ ಮಾಡುತ್ತಿಲ್ಲವೇ?" else "First Aid not working?", 
+                                fontWeight = FontWeight.Bold, 
+                                color = Color(0xFF9A3412)
+                            )
                         }
                         Text(
-                            "If symptoms persist or worsen, get professional medical help immediately.",
+                            if(langCode == "kn") "ಲಕ್ಷಣಗಳು ಮುಂದುವರಿದರೆ ಅಥವಾ ಉಲ್ಬಣಗೊಂಡರೆ, ತಕ್ಷಣ ವೈದ್ಯಕೀಯ ಸಹಾಯ ಪಡೆಯಿರಿ." 
+                            else "If symptoms persist or worsen, get professional medical help immediately.",
                             fontSize = 13.sp,
                             color = Color(0xFFC2410C),
                             modifier = Modifier.padding(top = 8.dp, bottom = 16.dp)
@@ -159,7 +191,7 @@ fun DetailScreen(
                         ) {
                             Icon(Icons.Default.Map, contentDescription = null, modifier = Modifier.size(18.dp))
                             Spacer(Modifier.width(8.dp))
-                            Text("Navigate to Nearest Hospital", fontWeight = FontWeight.Bold)
+                            Text(if(langCode == "kn") "ಹತ್ತಿರದ ಆಸ್ಪತ್ರೆಗೆ ಹೋಗಿ" else "Navigate to Nearest Hospital", fontWeight = FontWeight.Bold)
                         }
                     }
                 }
@@ -177,7 +209,7 @@ fun DetailScreen(
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Text(
-                            text = "Life-Threatening?",
+                            text = if(langCode == "kn") "ಜೀವಕ್ಕೆ ಅಪಾಯವಿದೆಯೇ?" else "Life-Threatening?",
                             fontWeight = FontWeight.Black,
                             fontSize = 20.sp,
                             color = Color(0xFF7F1D1D)
@@ -196,12 +228,32 @@ fun DetailScreen(
                         ) {
                             Icon(Icons.Default.Call, contentDescription = null)
                             Spacer(Modifier.width(8.dp))
-                            Text("Call 108 Now", fontWeight = FontWeight.Black, fontSize = 18.sp)
+                            Text(if(langCode == "kn") "ಈಗಲೇ 108 ಕ್ಕೆ ಕರೆ ಮಾಡಿ" else "Call 108 Now", fontWeight = FontWeight.Black, fontSize = 18.sp)
                         }
                     }
                 }
             }
         }
+    }
+}
+
+@Composable
+fun SectionTitle(title: String, color: Color = Color.Gray) {
+    Text(
+        text = title,
+        fontSize = 12.sp,
+        fontWeight = FontWeight.Black,
+        color = color,
+        letterSpacing = 2.sp,
+        modifier = Modifier.padding(bottom = 16.dp)
+    )
+}
+
+@Composable
+fun BulletPoint(text: String) {
+    Row(modifier = Modifier.padding(bottom = 8.dp)) {
+        Text("• ", fontWeight = FontWeight.Bold)
+        Text(text, fontSize = 15.sp, color = Color(0xFF334155))
     }
 }
 
